@@ -52,9 +52,9 @@ README.md
 
 ## Phase Status
 
-- Phase 1: Project scaffold
-- Phase 2: Synthetic dataset
-- Phase 3: Model training
+- Phase 1: Project scaffold - complete
+- Phase 2: Synthetic dataset - complete
+- Phase 3: Model training - complete
 - Phase 4: Prediction service
 - Phase 5: FastAPI backend
 - Phase 6: Frontend
@@ -62,4 +62,3 @@ README.md
 - Phase 8: MLflow
 - Phase 9: Tests
 - Phase 10: GitHub Actions CI
-
