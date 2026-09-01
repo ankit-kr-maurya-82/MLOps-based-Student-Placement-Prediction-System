@@ -56,7 +56,7 @@ README.md
 - Phase 2: Synthetic dataset - complete
 - Phase 3: Model training - complete
 - Phase 4: Prediction service - complete
-- Phase 5: FastAPI backend
+- Phase 5: FastAPI backend - complete
 - Phase 6: Frontend
 - Phase 7: Docker
 - Phase 8: MLflow
