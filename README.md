@@ -61,4 +61,20 @@ README.md
 - Phase 7: Docker - complete
 - Phase 8: MLflow - complete
 - Phase 9: Tests - complete
-- Phase 10: GitHub Actions CI
+- Phase 10: GitHub Actions CI - complete
+
+## Tests
+
+Run the local test suite from the project root:
+
+```bash
+python -m pytest
+```
+
+The CI workflow also retrains the model artifact before running tests:
+
+```bash
+python -m backend.model.train
+python -m pytest
+docker build -t student-placement-prediction .
+```
