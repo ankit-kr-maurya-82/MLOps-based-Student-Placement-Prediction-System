@@ -55,7 +55,7 @@ README.md
 - Phase 1: Project scaffold - complete
 - Phase 2: Synthetic dataset - complete
 - Phase 3: Model training - complete
-- Phase 4: Prediction service
+- Phase 4: Prediction service - complete
 - Phase 5: FastAPI backend
 - Phase 6: Frontend
 - Phase 7: Docker
