@@ -1,1 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Placement Prediction System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="panel intro-panel" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">MLOps Student Analytics</p>
+        <h1 id="page-title">Placement Prediction Dashboard</h1>
+        <p class="summary">
+          Enter academic, skill, and experience details to estimate the student's placement outcome.
+        </p>
+      </div>
 
+      <div class="stats-strip" aria-label="Model input summary">
+        <div>
+          <span class="stat-value">10</span>
+          <span class="stat-label">Features</span>
+        </div>
+        <div>
+          <span class="stat-value">500</span>
+          <span class="stat-label">Training Records</span>
+        </div>
+        <div>
+          <span class="stat-value">API</span>
+          <span class="stat-label">FastAPI Served</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="dashboard-grid" aria-label="Prediction workspace">
+      <form class="panel form-panel" id="prediction-form" novalidate>
+        <div class="section-heading">
+          <p class="eyebrow">Student Profile</p>
+          <h2>Input Details</h2>
+        </div>
+
+        <div class="form-grid">
+          <label>
+            <span>CGPA</span>
+            <input type="number" name="cgpa" min="0" max="10" step="0.01" value="8.4" required>
+          </label>
+
+          <label>
+            <span>10th Percentage</span>
+            <input type="number" name="tenth_percentage" min="0" max="100" step="0.01" value="82" required>
+          </label>
+
+          <label>
+            <span>12th Percentage</span>
+            <input type="number" name="twelfth_percentage" min="0" max="100" step="0.01" value="79" required>
+          </label>
+
+          <label>
+            <span>Internships</span>
+            <input type="number" name="internships" min="0" max="10" step="1" value="2" required>
+          </label>
+
+          <label>
+            <span>Projects</span>
+            <input type="number" name="projects" min="0" max="20" step="1" value="4" required>
+          </label>
+
+          <label>
+            <span>Aptitude Score</span>
+            <input type="number" name="aptitude_score" min="0" max="100" step="0.01" value="85" required>
+          </label>
+
+          <label>
+            <span>Communication Score</span>
+            <input type="number" name="communication_score" min="0" max="100" step="0.01" value="78" required>
+          </label>
+
+          <label>
+            <span>Coding Score</span>
+            <input type="number" name="coding_score" min="0" max="100" step="0.01" value="88" required>
+          </label>
+
+          <label>
+            <span>Backlogs</span>
+            <input type="number" name="backlogs" min="0" max="20" step="1" value="0" required>
+          </label>
+
+          <label>
+            <span>Certifications</span>
+            <input type="number" name="certifications" min="0" max="20" step="1" value="3" required>
+          </label>
+        </div>
+
+        <p class="form-message" id="form-message" role="alert"></p>
+
+        <button class="predict-button" id="predict-button" type="submit">
+          <span class="button-icon" aria-hidden="true">&uarr;</span>
+          <span>Predict Placement</span>
+        </button>
+      </form>
+
+      <aside class="panel result-panel" aria-labelledby="result-title">
+        <div class="section-heading">
+          <p class="eyebrow">Prediction Result</p>
+          <h2 id="result-title">Awaiting Input</h2>
+        </div>
+
+        <div class="meter" aria-hidden="true">
+          <div class="meter-fill" id="meter-fill"></div>
+          <div class="meter-center">
+            <span id="probability-value">--</span>
+            <small>chance</small>
+          </div>
+        </div>
+
+        <div class="result-copy">
+          <p class="result-label" id="result-label">Submit the form to generate a prediction.</p>
+          <p class="result-detail" id="result-detail">
+            The model evaluates academics, practical experience, aptitude, communication, coding, and backlog history.
+          </p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

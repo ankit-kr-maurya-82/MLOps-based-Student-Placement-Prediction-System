@@ -57,7 +57,7 @@ README.md
 - Phase 3: Model training - complete
 - Phase 4: Prediction service - complete
 - Phase 5: FastAPI backend - complete
-- Phase 6: Frontend
+- Phase 6: Frontend - complete
 - Phase 7: Docker
 - Phase 8: MLflow
 - Phase 9: Tests
