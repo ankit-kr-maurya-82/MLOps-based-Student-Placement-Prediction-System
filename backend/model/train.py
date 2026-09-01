@@ -1,6 +1,8 @@
 from pathlib import Path
 
 import joblib
+import mlflow
+import mlflow.sklearn
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
@@ -13,6 +15,7 @@ from sklearn.preprocessing import StandardScaler
 BASE_DIR = Path(__file__).resolve().parents[1]
 DATA_PATH = BASE_DIR / "data" / "placement.csv"
 MODEL_PATH = Path(__file__).resolve().parent / "placement_model.pkl"
+MLFLOW_EXPERIMENT_NAME = "placement-prediction"
 RANDOM_STATE = 42
 
 FEATURE_COLUMNS = [
@@ -98,9 +101,27 @@ def print_metrics(model_name: str, metrics: dict[str, float]) -> None:
     print(f"F1: {metrics['f1']:.4f}")
 
 
+def get_model_params(model) -> dict[str, object]:
+    if isinstance(model, Pipeline):
+        return model.named_steps["classifier"].get_params()
+
+    return model.get_params()
+
+
+def log_model_run(model_name: str, model, metrics: dict[str, float]) -> None:
+    run_name = model_name.lower().replace(" ", "-")
+
+    with mlflow.start_run(run_name=run_name):
+        mlflow.log_param("model_name", model_name)
+        mlflow.log_params(get_model_params(model))
+        mlflow.log_metrics(metrics)
+        mlflow.sklearn.log_model(model, name="model")
+
+
 def train_and_select_model():
     df = load_dataset()
     x_train, x_test, y_train, y_test = split_dataset(df)
+    mlflow.set_experiment(MLFLOW_EXPERIMENT_NAME)
 
     best_model_name = ""
     best_model = None
@@ -110,6 +131,7 @@ def train_and_select_model():
         model.fit(x_train, y_train)
         metrics = evaluate_model(model, x_test, y_test)
         print_metrics(model_name, metrics)
+        log_model_run(model_name, model, metrics)
 
         if best_metrics is None or metrics["f1"] > best_metrics["f1"]:
             best_model_name = model_name

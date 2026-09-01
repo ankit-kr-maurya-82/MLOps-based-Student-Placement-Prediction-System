@@ -16,6 +16,7 @@ env/
 
 mlruns/
 mlartifacts/
+mlflow.db
 
 *.pkl
 *.joblib
@@ -23,4 +24,3 @@ mlartifacts/
 
 .idea/
 .vscode/
-

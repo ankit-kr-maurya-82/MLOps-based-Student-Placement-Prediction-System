@@ -59,6 +59,6 @@ README.md
 - Phase 5: FastAPI backend - complete
 - Phase 6: Frontend - complete
 - Phase 7: Docker - complete
-- Phase 8: MLflow
+- Phase 8: MLflow - complete
 - Phase 9: Tests
 - Phase 10: GitHub Actions CI
